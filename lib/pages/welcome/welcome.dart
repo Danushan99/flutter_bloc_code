@@ -1,7 +1,11 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:untitled/pages/welcome/bloc/welcome_bloc.dart';
+import 'package:untitled/pages/welcome/bloc/welcome_event.dart';
+import 'package:untitled/pages/welcome/bloc/welcome_state.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({Key? key}) : super(key: key);
@@ -16,56 +20,62 @@ class _WelcomeState extends State<Welcome> {
     return Container(
       color: Colors.white,
       child: Scaffold(
-        body: Container(
-          margin: EdgeInsets.only(top: 34.h),
-          width: 370.w,
-          child: Stack(
-            alignment: Alignment.topCenter,
-            children: [
-              PageView(
+        body : BlocBuilder<WelcomeBloc, WelcomeState>(
+          builder: (context, state) {
+            return Container(
+              margin: EdgeInsets.only(top: 34.h),
+              width: 370.w,
+              child: Stack(
+                alignment: Alignment.topCenter,
                 children: [
-                  _page(
-                      1,
-                      context,
-                      "Next",
-                      "First See Learning",
-                      "its all about learning the  knowladgeits all about learning",
-                      "imagepath"),
-                  _page(
-                      2,
-                      context,
-                      "Next",
-                      "Connect with Everyone",
-                      "its all about learning the  knowladgeits all about learning",
-                      "imagepath"),
-                  _page(
-                      3,
-                      context,
-                      "Get Start",
-                      "Free for Everyone ",
-                      "its all about learning the  knowladgeits all about learning",
-                      "imagepath"),
+                  PageView(
+                    children: [
+                      _page(
+                          1,
+                          context,
+                          "Next",
+                          "First See Learning",
+                          "its all about learning the  knowladgeits all about learning",
+                          "imagepath"),
+                      _page(
+                          2,
+                          context,
+                          "Next",
+                          "Connect with Everyone",
+                          "its all about learning the  knowladgeits all about learning",
+                          "imagepath"),
+                      _page(
+                          3,
+                          context,
+                          "Get Start",
+                          "Free for Everyone ",
+                          "its all about learning the  knowladgeits all about learning",
+                          "imagepath"),
+                    ],
+                  ),
+                  Positioned(
+                      bottom: 100.h,
+                      child: DotsIndicator(
+                        dotsCount: 3,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        decorator: DotsDecorator(
+                            color: Colors.grey,
+                            activeColor: Colors.blueAccent,
+                            size: Size.square(8.0),
+                            activeSize: Size(10.0,8.0),
+                            activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))
+                        ),
+
+
+                      )
+                  )
                 ],
               ),
-              Positioned(
-                bottom: 100.h,
-                  child: DotsIndicator(
-                      dotsCount: 3,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    decorator: DotsDecorator(
-                      color: Colors.grey,
-                      activeColor: Colors.blueAccent,
-                      size: Size.square(8.0),
-                      activeSize: Size(10.0,8.0),
-                      activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))
-                    ),
+            );
+          },
+        )
 
 
-                  )
-              )
-            ],
-          ),
-        ),
       ),
     );
   }
