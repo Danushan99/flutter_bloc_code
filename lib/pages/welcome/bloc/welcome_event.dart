@@ -1,4 +1,3 @@
-class WelcomeEvent{
-
+class WelcomeEvent {
 
 }

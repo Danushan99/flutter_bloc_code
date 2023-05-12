@@ -28,7 +28,13 @@ class _WelcomeState extends State<Welcome> {
               child: Stack(
                 alignment: Alignment.topCenter,
                 children: [
+
                   PageView(
+                    onPageChanged: (index){
+                      state.page = index;
+                      BlocProvider.of<WelcomeBloc>(context).add(WelcomeEvent());
+                      print("page num is ${index}");
+                    },
                     children: [
                       _page(
                           1,
@@ -56,13 +62,14 @@ class _WelcomeState extends State<Welcome> {
                   Positioned(
                       bottom: 100.h,
                       child: DotsIndicator(
+                        position: state.page.toInt(),
                         dotsCount: 3,
                         mainAxisAlignment: MainAxisAlignment.center,
                         decorator: DotsDecorator(
                             color: Colors.grey,
                             activeColor: Colors.blueAccent,
                             size: Size.square(8.0),
-                            activeSize: Size(10.0,8.0),
+                            activeSize: Size(18.0,8.0),
                             activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))
                         ),
 
