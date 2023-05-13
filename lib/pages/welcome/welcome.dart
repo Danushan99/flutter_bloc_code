@@ -42,21 +42,21 @@ class _WelcomeState extends State<Welcome> {
                           "Next",
                           "First See Learning",
                           "its all about learning the  knowladgeits all about learning",
-                          "imagepath"),
+                          "assets/images/reading.png"),
                       _page(
                           2,
                           context,
                           "Next",
                           "Connect with Everyone",
                           "its all about learning the  knowladgeits all about learning",
-                          "imagepath"),
+                          "assets/images/boy.png"),
                       _page(
                           3,
                           context,
                           "Get Start",
                           "Free for Everyone ",
                           "its all about learning the  knowladgeits all about learning",
-                          "imagepath"),
+                          "assets/images/man.png"),
                     ],
                   ),
                   Positioned(
@@ -95,7 +95,7 @@ Widget _page(int Index, BuildContext context, String buttonName, String title,
       SizedBox(
         width: 345.w,
         height: 345.w,
-        child: Text(imagePath),
+        child: Image.asset(imagePath)
       ),
       Container(
         child: Text(title,
