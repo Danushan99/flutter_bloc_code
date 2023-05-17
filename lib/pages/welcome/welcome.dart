@@ -15,6 +15,7 @@ class Welcome extends StatefulWidget {
 }
 
 class _WelcomeState extends State<Welcome> {
+  PageController pageController = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,6 +31,7 @@ class _WelcomeState extends State<Welcome> {
                 children: [
 
                   PageView(
+                    controller: PageController(),
                     onPageChanged: (index){
                       state.page = index;
                       BlocProvider.of<WelcomeBloc>(context).add(WelcomeEvent());
@@ -37,6 +39,7 @@ class _WelcomeState extends State<Welcome> {
                     },
                     children: [
                       _page(
+
                           1,
                           context,
                           "Next",
@@ -114,7 +117,11 @@ Widget _page(int Index, BuildContext context, String buttonName, String title,
                 fontWeight: FontWeight.normal)),
       ),
       GestureDetector(
-        onTap: (){},
+        onTap: (){
+
+          if(Index<3){}
+          else{}
+        },
         child: Container(
           margin: EdgeInsets.only(top: 100.w, right: 25.w, left: 25.w),
           width: 325.w,
